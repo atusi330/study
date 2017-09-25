@@ -1,0 +1,26 @@
+<!--
+jQueryの練習
+jQeryはbodyの閉じ括弧の直前に書くのが一般的
+jQueryは基本的にセレクタとメソッドを覚える
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>jQueryの練習</title>
+</head>
+<body>
+    <p>jQueryの練習</p>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script> // scriptタグは必ずjQueryを読み込んでから書く
+      //$(document).ready(function() {
+      $(function(){ //上記の省略形。こちらが基本
+        // セレクタ：処理対象となるDOM要素を指定する記述。ここでは$('p')
+        // メソッド：対象に対する処理。ここではcss('color','red'
+        // メソッドチェーン：メソッド同士を.（ピリオド）で繋ぐことで複数の処理を行える
+        $('p').css('color','red').hide('slow');
+      });
+      </script>
+</body>
+</html>
