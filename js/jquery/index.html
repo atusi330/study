@@ -9,6 +9,7 @@ jQueryは基本的にセレクタとメソッドを覚える
 <head>
     <meta charset="utf-8">
     <title>jQueryの練習</title>
+    <ul id="main">
     <li>0</li>
     <li class="item">1</li>
     <li class="item">2</li>
@@ -27,13 +28,16 @@ jQueryは基本的にセレクタとメソッドを覚える
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueryを読み込んでから書く
       $(function(){
-        // セレクタ
-            // $("下記の要素")
-            // html要素 p h1 ul
-            // id #main
-            // class .item
-            // $("#sub").css('color', 'red');// IDを指定する
-            $(".item").css('color', 'red');// classを指定する
+        // セレクタ、メソッド
+        // > 直下の要素
+        // $("#main > .item").css('color', 'red');
+        //  （空白）  それ以下の要素
+        // $("#main .item").css('color','red');
+        // , 複数の要素
+        // $("p, .item").css('color','red');
+        // + 隣接する要素
+        $(".item + .item").css('color','red');
+
       });
       </script>
 </body>
