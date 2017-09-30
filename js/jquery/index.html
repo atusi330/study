@@ -29,14 +29,22 @@ jQueryは基本的にセレクタとメソッドを覚える
     <script> // scriptタグは必ずjQueryを読み込んでから書く
       $(function(){
         // セレクタ、メソッド
-        // > 直下の要素
-        // $("#main > .item").css('color', 'red');
-        //  （空白）  それ以下の要素
-        // $("#main .item").css('color','red');
-        // , 複数の要素
-        // $("p, .item").css('color','red');
-        // + 隣接する要素
-        $(".item + .item").css('color','red');
+        // フィルタ
+        // :eq()
+        // $("#sub > li:eq(2)").css('color','red');// #sub直下のliの3番目だけ選択される
+        // :gt() グレーターザン
+        // $("#sub > li:gt(1)").css('color','red');// 1より大きい
+        // :lt() レスザン
+        // $("#sub > li:lt(1)").css('color','red');//1より小さい
+        // :even 偶数
+        // $("#sub > li:even").css('color','red');// 偶数
+        // :odd 奇数
+        // $("#sub > li:odd").css('color','blue');// 奇数
+        // :contains()
+        $("#sub > li:contains('4')").css('color','red');// liタグで囲まれた中身に含まれるものを文字列で指定する
+        // :first
+        // :last
+
 
       });
       </script>
