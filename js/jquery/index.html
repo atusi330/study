@@ -9,29 +9,28 @@ jQueryは基本的にセレクタとメソッドを覚える
 <head>
     <meta charset="utf-8">
     <title>jQueryの練習</title>
+    <style>
+      .myStyle {
+        border: 5px solid green;
+        font-size: 48px;
+      }
+    </style>
   </head>
   <body>
     <p>jQueryの練習</p>
-    <p><a href = "http://google.com">Google.com</a></p>
-    <p><a href = "http://yahoo.com">Yahoo.com</a></p>
-    <p><a href = "http://dotinstall.com">Dotinstall</a></p>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        // セレクタ、メソッド
-        // 属性セレクタ htmlに含まれる属性を使ってセレクタを指定していく（例えばaタグのhref属性がgoogle.comなものを指定するなど）
-        //指定の仕方
-        // = 等しい
-        // $('a[href = "http://google.com"]').css('background','red');
-        // != 等しくない
-        // $('a[href != "http://google.com"]').css('background','blue');
-        // *= 指定の文字列を含む
-        // $('a[href *= "o"]').css('background','orange');
-        // ^= 先頭から始まる
-        // $('a[href ^= "http://"]').css('background','pink');
-        // $= 末尾がそれで終わる
-        $('a[href $= ".com"]').css('background','black');
+        // メソッド
+        //.css 値の設定だけでなく値の取得にも使える
+        //値の設定
+        // $('p').css('color','red').css('background','blue');
+        //値の取得
+        // console.log($('p').css('color'));//.cssに値を入れずに記述すると現在当たっているcolorの情報が取得できるのでそれをconsoleに表示
+        //addClass removeClass
+        $('p').addClass('myStyle');// classを追加
+        $('p').removeClass('myStyle');// classを削除 
 
       });
       </script>
