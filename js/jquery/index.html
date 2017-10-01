@@ -11,42 +11,27 @@ jQueryは基本的にセレクタとメソッドを覚える
     <title>jQueryの練習</title>
   </head>
   <body>
-    <ul id="main">
-    <li>0</li>
-    <li class="item">1</li>
-    <li class="item">2</li>
-    <li>
-        3
-        <ul id="sub">
-            <li>3-0</li>
-            <li>3-1</li>
-            <li class="item">3-2</li>
-            <li class="item">3-3</li>
-            <li>3-4</li>
-        </ul>
     <p>jQueryの練習</p>
+    <p><a href = "http://google.com">Google.com</a></p>
+    <p><a href = "http://yahoo.com">Yahoo.com</a></p>
+    <p><a href = "http://dotinstall.com">Dotinstall</a></p>
+
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script> // scriptタグは必ずjQueryを読み込んでから書く
+    <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
         // セレクタ、メソッド
-        // メソッドを使ったDOM要素の指定
-        //parent(),children()
-        //next(),prev()
-        //siblings() 兄弟要素を指定する
-        // parent() おや要素
-        // $("#sub").parent().css('color','red');
-        // children() 子要素
-        // $("#sub").children().css('color','red');
-        //next
-        // $("#sub > li:eq(2)").next().css('color','red');
-        // //prev
-        // $("#sub > li:eq(2)").prev().css('color','blue');
-        // siblings 選択したものと同列のものを選択（選択されたものは含まない）
-        $("#sub > li:eq(2)").siblings().css('color','blue');
-
-
-
-
+        // 属性セレクタ htmlに含まれる属性を使ってセレクタを指定していく（例えばaタグのhref属性がgoogle.comなものを指定するなど）
+        //指定の仕方
+        // = 等しい
+        // $('a[href = "http://google.com"]').css('background','red');
+        // != 等しくない
+        // $('a[href != "http://google.com"]').css('background','blue');
+        // *= 指定の文字列を含む
+        // $('a[href *= "o"]').css('background','orange');
+        // ^= 先頭から始まる
+        // $('a[href ^= "http://"]').css('background','pink');
+        // $= 末尾がそれで終わる
+        $('a[href $= ".com"]').css('background','black');
 
       });
       </script>
