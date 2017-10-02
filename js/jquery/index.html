@@ -18,22 +18,30 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <a href="http://google.com" data-sitename="google">Google.com</a><!-- カスタム属性data-sitename（sitenameは任意）を設定し値にgoogleと入れる -->
-    <a href="http://yahoo.com">Yahoo.com</a>
+    <a href="http://google.com" data-sitename="google">google</a>
+    <input type="text" value="hello">
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        // メソッド
-        // attr htmlの属性を取得したり変更したりできる
-        console.log($('a').attr('href'));//aタグのhref属性を取得する
-        $('a').attr('href','http://google.co.jp');//hrefを設定する
-        // data
-        console.log($('a').data('sitename'));//カスタム属性を取得できる
-        $('a').data('sitename','ahahahaha');
-        console.log($('a').data('sitename'));
+        //タグの中身を変更する
 
-        // $('a').attr('data-sitename','ahahahaha');
+        //text テキストを変更できる
+        // $('p').text('just Changed!');//設定
+        // console.log($('p').text());//取得
+
+        //html テキスト＋htmlタグも設定できる
+        // $('p').html('<a href="">click me!</a>');
+
+        //val フォームのvalueに使える
+        console.log($('input').val());//取得
+        $('input').val('hello again!');
+
+        //empty 中身を削除したい場合
+        $('p').empty();
+
+        //remove タグごと消したい場合
+        $('p').remove();
 
       });
       </script>
