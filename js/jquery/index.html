@@ -18,19 +18,22 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
+    <a href="http://google.com" data-sitename="google">Google.com</a><!-- カスタム属性data-sitename（sitenameは任意）を設定し値にgoogleと入れる -->
+    <a href="http://yahoo.com">Yahoo.com</a>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
         // メソッド
-        //.css 値の設定だけでなく値の取得にも使える
-        //値の設定
-        // $('p').css('color','red').css('background','blue');
-        //値の取得
-        // console.log($('p').css('color'));//.cssに値を入れずに記述すると現在当たっているcolorの情報が取得できるのでそれをconsoleに表示
-        //addClass removeClass
-        $('p').addClass('myStyle');// classを追加
-        $('p').removeClass('myStyle');// classを削除 
+        // attr htmlの属性を取得したり変更したりできる
+        console.log($('a').attr('href'));//aタグのhref属性を取得する
+        $('a').attr('href','http://google.co.jp');//hrefを設定する
+        // data
+        console.log($('a').data('sitename'));//カスタム属性を取得できる
+        $('a').data('sitename','ahahahaha');
+        console.log($('a').data('sitename'));
+
+        // $('a').attr('data-sitename','ahahahaha');
 
       });
       </script>
