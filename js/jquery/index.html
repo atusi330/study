@@ -18,33 +18,34 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <ul>
-      <li>0</li>
-      <li>1</li>
-      <li>2</li>
-    </ul>
+    <div id = "box" style="width: 100px; height: 100px; background: red;"></div>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        //新しい要素を追加する
+        //使えるエフェクト
 
-        var li = $('<li>').text('just added');
-        //before -> insertBefore
-        // $('ul > li:eq(1)').before(li);//選択した場所の前に追加される
-        // li.insertBefore('ul > li:eq(1)');//これでも上記と同じ結果が得られる
-        //after -> insertAfter
-        // $('ul > li:eq(1)').after(li);//選択した場所の後に追加される
-        // li.insertAfter('ul > li:eq(1)');
+        //hide
+        // $('#box').hide();
+        // $('#box').hide('slow');//ゆっくり消せる
+        // $('#box').hide(2000);// msで消える時間を指定できる
 
-        //prepend -> prependTo 指定した要素の子要素の先頭に追加する
-        // $('ul').prepend(li);
-        // li.prependTo($('ul'));
+        //show
+        //hideの逆
 
-        //append -> attendTo 指定した要素の子要素の末尾に追加する
-        // $('ul').append(li);
-        li.appendTo($('ul'));
+        //fadeOut
+        // $('#box').fadeOut(800);
+        //fadeIn
+        //fadeOutの逆
 
+        //toggle あれば消す。なければ現れる
+        // $('#box').toggle(1000);
+
+        //上記のメソッドは第2引数（taggle(1000,ここ)）に関数をいれることができる
+
+        $('#box').fadeOut(1000,function(){
+          alert("gone!");//fadeOutの処理が完了したあとに実行される
+        });
       });
       </script>
 </body>
