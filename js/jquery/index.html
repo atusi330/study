@@ -18,30 +18,32 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <a href="http://google.com" data-sitename="google">google</a>
-    <input type="text" value="hello">
+    <ul>
+      <li>0</li>
+      <li>1</li>
+      <li>2</li>
+    </ul>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        //タグの中身を変更する
+        //新しい要素を追加する
 
-        //text テキストを変更できる
-        // $('p').text('just Changed!');//設定
-        // console.log($('p').text());//取得
+        var li = $('<li>').text('just added');
+        //before -> insertBefore
+        // $('ul > li:eq(1)').before(li);//選択した場所の前に追加される
+        // li.insertBefore('ul > li:eq(1)');//これでも上記と同じ結果が得られる
+        //after -> insertAfter
+        // $('ul > li:eq(1)').after(li);//選択した場所の後に追加される
+        // li.insertAfter('ul > li:eq(1)');
 
-        //html テキスト＋htmlタグも設定できる
-        // $('p').html('<a href="">click me!</a>');
+        //prepend -> prependTo 指定した要素の子要素の先頭に追加する
+        // $('ul').prepend(li);
+        // li.prependTo($('ul'));
 
-        //val フォームのvalueに使える
-        console.log($('input').val());//取得
-        $('input').val('hello again!');
-
-        //empty 中身を削除したい場合
-        $('p').empty();
-
-        //remove タグごと消したい場合
-        $('p').remove();
+        //append -> attendTo 指定した要素の子要素の末尾に追加する
+        // $('ul').append(li);
+        li.appendTo($('ul'));
 
       });
       </script>
