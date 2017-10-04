@@ -18,49 +18,44 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <div id = "box" style="width: 100px; height: 100px; background: red;"></div>
+    <input type="text" id="name">
+    <select id="members" name="members">
+      <option>tagutchi</option>
+      <option>fkoji</option>
+      <option>dotinstall</option>
+    </select>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        //イベント
-
-        //click
-        $('#box').click(function(){
-          alert("hi");
-        });
-
-        // //mouseover マウスが対象の上にあるとき
-        // $('#box').mouseover(function(){
-        //   $(this).css('background','green');//イベントの対象になっているものを変更したいときはthisで表せる
-        // });
-        //
-        // //mouseout マウスが対象から離れている時
-        // $('#box').mouseout(function(){
+        //formイベント
+        // //focus：対象にフォーカスが当たった時に関数が実行される
+        // $('#name').focus(function(){
         //   $(this).css('background','red');
         // });
-
-        // // mousemove マウスが動いている間に処理をする
-        // $('#box').mousemove(function(e){ //イベントの情報を渡したいので引数eを渡す。このeはイベントオブジェクト。公式のAPI Documentation > Events > Event Object 参照
-        //   $(this).text(e.pageX);
+        //
+        // //blur：フォーカスが外れた時に関数が実行される
+        // $('#name').blur(function(){
+        //   $(this).css('background','white');
         // });
 
-        // //上記はメソッドチェーンで繋げられる。
-        $('#box').mouseover(function(){
-          $(this).css('background','green');
-        })
-        .mouseout(function(){
-          $(this).css('background','red');
-        })
-        .mousemove(function(e){
-          $(this).text(e.pageX);
-        });
+        //続けてかける
+        $('#name')
+          .focus(function(){
+            $(this).css('background','red');
+          })
+          .blur(function(){
+            $(this).css('background','white');
+          });
 
-
+        //change：フォームの値が変わった時に関数が実行される（よくセレクト文と使われる）
+        $('#members').change(function() {
+                alert('changed!');
+            });
 
 
 
       });
-      </script>
+    </script>
 </body>
 </html>
