@@ -35,6 +35,14 @@ jQueryは基本的にセレクタとメソッドを覚える
 
         // $('a').attr('data-sitename','ahahahaha');
 
+        // attr は HTML の属性と連動していて、このメソッドで data-sitename の値を保存すると実際に HTML の値が書き換わる。
+        //
+        // data は HTML の属性を操作しているわけではなく、JavaScript 側でデータを保持している。そのため、コンソールで確認しても HTML 内の data-sitename は書き換わらない
+        //
+        // HTML 側で data-sitename="google" と記述した場合も attr() で値をセットした場合も、用意されるのは属性値のみ。
+        // attr('data-sitename') で値を読みにいったら、常に属性値を取得する
+        // data('sitename') を読みにいった場合、データとしての sitename を取得する。ただし、そのデータがなければ data-sitaname の属性値を取る。
+
       });
       </script>
 </body>
