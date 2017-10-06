@@ -18,40 +18,31 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <input type="text" id="name">
-  <select id="members" name="members">
-    <option>tagutchi</option>
-    <option>fkoji</option>
-    <option>dotinstall</option>
-  </select>
+    <button>Add!</button>
+
+
 
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        //formイベント
-        // //focus：対象にフォーカスが当たった時に関数が実行される
-        // $('#name').focus(function(){
-        //   $(this).css('background','red');
+        //on 動的に作られた要素に対してイベントを割り当てる
+
+        $('button').click(function(){
+          var p = $('<p>').text('vanish!').addClass('vanish');//pタグを用意して中身をvanishにしてクラスvanishをつける動的に生成される
+          $(this).before(p);
+        });
+
+        // //Addをクリックして生まれたvanishを消したいと思って下記を記入
+        // //しかしうまくいかない。理由はclick イベントはドキュメントが読み込まれた時に設定するのですが、読み込まれた時点では vanish クラスがついた要素は存在していない
+        // $('.vanish').click(function(){
+        //   $(this).remove();
         // });
-        //
-        // //blur：フォーカスが外れた時に関数が実行される
-        // $('#name').blur(function(){
-        //   $(this).css('background','white');
 
-        //続けてかける
-        $('#name')
-          .focus(function(){
-            $(this).css('background','red');
-          })
-          .blur(function(){
-            $(this).css('background','white');
-          });
-
-        //change：フォームの値が変わった時に関数が実行される（よくセレクト文と使われる）
-        $('#members').change(function() {
-                alert('changed!');
-            });
+        // onを使って上記を実装する
+        $('body').on('click','.vanish',function(){ //vanishではなく親要素のbody を指定するその後メソッドチェーンで.on('イベントの種類',('対象となるもの'),関数)となる
+          $(this).remove();
+        });
 
       });
     </script>
