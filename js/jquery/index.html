@@ -2,6 +2,9 @@
 jQueryの練習
 jQeryはbodyの閉じ括弧の直前に書くのが一般的
 jQueryは基本的にセレクタとメソッドを覚える
+Ajax
+Ajax の命令は jQuery 公式サイトの「API Documentation」の中の「Ajax」というところにある。
+非同期通信とは？…処理が終わる前に次の処理に移る
 -->
 
 <!DOCTYPE html>
@@ -18,7 +21,8 @@ jQueryは基本的にセレクタとメソッドを覚える
   </head>
   <body>
     <p>jQueryの練習</p>
-    <button>Add!</button>
+    <button>もっと読む</button>
+    <div id="result"></div>
 
 
 
@@ -26,23 +30,21 @@ jQueryは基本的にセレクタとメソッドを覚える
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script> // scriptタグは必ずjQueyを読み込んでから書く
       $(function(){
-        //on 動的に作られた要素に対してイベントを割り当てる
-
+        //Ajax
+        //asynchronous（非同期） JavaScript XML
+        //サーバーと通信 + ページの書き換え
         $('button').click(function(){
-          var p = $('<p>').text('vanish!').addClass('vanish');//pタグを用意して中身をvanishにしてクラスvanishをつける動的に生成される
-          $(this).before(p);
+          // $('#result').load('more.html');
+          // $('message').css('color','red');//これではうまくいかない
+          //上記ができない理由が非同期のせい。loadでmessageが読み込まれる前に$('message').css('color','red');を実行してしまうのでmessageが用意されず処理を反映できない
+
+          //上記を処理したい場合は、.loadに第二引数で関数（コールバック関数）を与える
+
+          $('#result').load('more.html',function(){
+            $('#message').css('color','red');
+          });
         });
 
-        // //Addをクリックして生まれたvanishを消したいと思って下記を記入
-        // //しかしうまくいかない。理由はclick イベントはドキュメントが読み込まれた時に設定するのですが、読み込まれた時点では vanish クラスがついた要素は存在していない
-        // $('.vanish').click(function(){
-        //   $(this).remove();
-        // });
-
-        // onを使って上記を実装する
-        $('body').on('click','.vanish',function(){ //vanishではなく親要素のbody を指定するその後メソッドチェーンで.on('イベントの種類',('対象となるもの'),関数)となる
-          $(this).remove();
-        });
 
       });
     </script>
