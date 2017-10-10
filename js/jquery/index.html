@@ -21,8 +21,12 @@ Ajax の命令は jQuery 公式サイトの「API Documentation」の中の「Aj
   </head>
   <body>
     <p>jQueryの練習</p>
-    <button>もっと読む</button>
+    <p>
+      <input type="text" name="name" id="name">
+      <input type="button" id="greet" value="greet!">
+    </p>
     <div id="result"></div>
+
 
 
 
@@ -33,20 +37,16 @@ Ajax の命令は jQuery 公式サイトの「API Documentation」の中の「Aj
         //Ajax
         //asynchronous（非同期） JavaScript XML
         //サーバーと通信 + ページの書き換え
-        $('button').click(function(){
-          // $('#result').load('more.html');
-          // $('message').css('color','red');//これではうまくいかない
-          //上記ができない理由が非同期のせい。loadでmessageが読み込まれる前に$('message').css('color','red');を実行してしまうのでmessageが用意されず処理を反映できない
-
-          //上記を処理したい場合は、.loadに第二引数で関数（コールバック関数）を与える
-
-          $('#result').load('more.html',function(){
-            $('#message').css('color','red');
+        // $.post：データを更新したとき
+        // $.get：単にデータを取得する
+        $('#greet').click(function(){
+          $.get('greet.php',{//greet.phpの結果はコールバック関数の引数に入れられる
+              name: $('#name').val() //オプションを渡すだけなのでセミコロンいらない！
+          },function(data){//greet.phpの中身をコールバック関数に渡す
+            $('#result').html(data.message + '(' + data.length + ')');
+          });//ファイル名、パラメータ、コールバック関数
           });
         });
-
-
-      });
     </script>
 </body>
 </html>
