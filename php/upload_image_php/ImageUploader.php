@@ -26,7 +26,7 @@ class ImageUploader{
       $_SESSION['success'] = 'Upload Done!';//エラーがなければsuccessにメッセージが入る
     }catch(\Exception $e){
     $_SESSION['error'] = $e->getMessage();//エラーがあればエラーメッセージを代入
-    exit;
+    // exit;
   }
   // redirect
       header('Location: http://' . $_SERVER['HTTP_HOST']);//index.phpに飛ばす
@@ -42,7 +42,7 @@ class ImageUploader{
       }
 
       if(isset($_SESSION['error'])){
-        $success = $_SESSION['error'];
+        $error = $_SESSION['error'];
         unset($_SESSION['error']);
       }
       return [$success, $error];
@@ -165,7 +165,6 @@ class ImageUploader{
           throw new \Exception('File too large!');
         default:
           throw new \Exception('Err: '. $_FILES['image']['error']);
-          break;
       }
     }
 }

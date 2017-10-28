@@ -53,16 +53,57 @@ $images = $uploader->getImages();
   li{
     margin-bottom: 5px;
   }
+input[type=file]{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.btn{
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 10px auto 20px;
+  color: #fff;
+  box-shadow: 0 4px #0088cc;
+  background: #00aaff;
+}
+
+.btn:hover{
+  opacity: 0.8;
+}
+
+.msg {
+  margin: 0 auto 15px;
+  width: 400px;
+  font-weight: bold;
+}
+
+.msg.success{
+  color:#4caf50;
+}
+
+.msg.error{
+  color:#f44336;
+}
+
+
   </style>
 </head>
 <body>
-
-  <form action="" method="post" enctype="multipart/form-data">
+<div class="btn">
+  Upload!
+  <form action="" method="post" enctype="multipart/form-data" id="my_form">
     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo h(MAX_FILE_SIZE); ?>">
-    <input type="file" name="image">
-    <input type="submit" value="upload">
+    <input type="file" name="image" id="my_file">
   </form>
-
+</div>
 <!-- アップロード関係のメッセージ表示　jQeryで3秒後に消す -->
 <?php if(isset($success)) : ?>
   <div class="msg success"><?php echo h($success); ?></div>
@@ -74,7 +115,7 @@ $images = $uploader->getImages();
   <ul>
     <?php foreach($images as $image) : ?>
       <li>
-        <a href= "<?php echo h(basename(IMAGES_DIR)). '/' . basename($image); ?>">
+        <a href= "<?php echo h(basename(IMAGES_DIR)). '/' . h(basename($image)); ?>">
           <img src="<?php echo h($image); ?>"
         </a>
       </li>
@@ -85,6 +126,9 @@ $images = $uploader->getImages();
 <script>
 $(function(){
   $('.msg').fadeOut(3000);
+  $('#my_file').on('change',function(){
+    $('#my_form').submit();
+  })
 })
 </script>
 </body>
